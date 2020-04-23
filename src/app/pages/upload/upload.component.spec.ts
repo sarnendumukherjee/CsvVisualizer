@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UploadComponent } from './upload.component';
+import { Papa } from 'ngx-papaparse';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UploadComponent', () => {
   let component: UploadComponent;
@@ -8,9 +10,10 @@ describe('UploadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadComponent ]
-    })
-    .compileComponents();
+      declarations: [UploadComponent],
+      providers: [Papa],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

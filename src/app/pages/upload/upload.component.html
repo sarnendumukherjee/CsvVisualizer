@@ -1,1 +1,31 @@
-<p>upload works!</p>
+<mat-grid-list cols="1" rowHeight="fit" style="height: 100%;">
+  <mat-grid-tile style="background-color: #efefef;">
+    <mat-card style="background-color: #dddddd; padding: 3rem;">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-toolbar color="primary">
+            <span>Please upload a CSV file here.</span>
+          </mat-toolbar>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <input
+          type="file"
+          #uploads
+          id="fileInput"
+          name="fileInput"
+          accept=".csv"
+          (change)="onChange(uploads.files)"
+        />
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="!(_files.length > 0)"
+          (click)="process()"
+        >
+          Process
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

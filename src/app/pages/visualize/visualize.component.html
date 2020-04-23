@@ -1,1 +1,61 @@
-<p>visualize works!</p>
+<mat-grid-list cols="1" rowHeight="fit" style="height: 100%;">
+  <mat-grid-tile style="background-color: #efefef;">
+    <mat-card style="background-color: #dddddd; padding: 3rem; width: 100%;">
+      <mat-card-header>
+        <mat-card-title style="padding: 1rem;">
+          <a [routerLink]="['/upload']">
+            <mat-icon aria-hidden="false">home</mat-icon>
+          </a>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Issue count Filter</mat-label>
+          <input
+            type="text"
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Ex. 5"
+          />
+        </mat-form-field>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <caption>
+            CSV data visualized
+          </caption>
+          <ng-container matColumnDef="First name">
+            <th id="firstName" mat-header-cell *matHeaderCellDef>First name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element["First name"] }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Sur name">
+            <th id="surName" mat-header-cell *matHeaderCellDef>Sur name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element["Sur name"] }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Issue count">
+            <th id="issueCount" mat-header-cell *matHeaderCellDef>
+              Issue count
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element["Issue count"] }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date of birth">
+            <th id="dob" mat-header-cell *matHeaderCellDef>Date of birth</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element["Date of birth"] | date }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

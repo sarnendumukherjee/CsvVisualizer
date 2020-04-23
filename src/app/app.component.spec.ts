@@ -21,7 +21,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('span').textContent).toContain(
-      'app is running!'
+      'CSV Visualizer'
     );
   });
 });
